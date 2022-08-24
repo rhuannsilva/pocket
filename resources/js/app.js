@@ -16,7 +16,11 @@ import { createApp } from 'vue';
 const app = createApp({});
 
 import headercomp from './components/headercomp.vue';
+import login from './components/login.vue';
+
+
 app.component('headercomp', headercomp);
+app.component('login', login);
 
 /**
  * The following block of code may be used to automatically register your
