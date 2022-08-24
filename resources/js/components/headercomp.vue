@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="head">
-            <p>Control</p>
+            <h1>Control My Pocket</h1>
         </div>
     </div>    
 </template>
@@ -10,8 +10,12 @@
 .container{
     width: 100%;
     height: 8vh;
+    padding: 10px;
     background-color: #03045E;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 10px 10px;
+}
+.head h1{
+    color: #fff;
 }
 </style>
 
