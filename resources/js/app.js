@@ -17,8 +17,6 @@ const app = createApp({});
 
 import headercomp from './components/headercomp.vue';
 import login from './components/login.vue';
-
-
 app.component('headercomp', headercomp);
 app.component('login', login);
 
