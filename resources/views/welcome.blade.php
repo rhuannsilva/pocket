@@ -23,7 +23,8 @@
     <body>
         <div id="app">
             <headercomp></headercomp>
-            <login></login>
+            <!-- <login></login> -->
+            <content></content>
         </div>
         @vite('resources/js/app.js')
     </body>
