@@ -3,7 +3,7 @@
         <div class="login">
             <input type="text" placeholder="Login">
             <input type="password" placeholder="Senha">
-            <button>Entrar</button>
+            <button @click="nextPage">Entrar</button>
         </div>
     </div>
 </template>
@@ -51,8 +51,15 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
+        // mounted() {
+        //     console.log('Component mounted.')
+        // },
+        methods: {
+            nextPage(){
+                location.href = 'dashboard';
+            }
+        },
     }
 </script>
+
+
