@@ -1,9 +1,9 @@
 <template>
     <div class="container">
         <div class="login">
-            <input type="text" placeholder="Login">
-            <input type="password" placeholder="Senha">
-            <button @click="nextPage">Entrar</button>
+            <input id="user" type="text" placeholder="Login">
+            <input id="password" type="password" placeholder="Senha">
+            <button @click="userVerification">Entrar</button>
         </div>
     </div>
 </template>
@@ -57,6 +57,16 @@
         methods: {
             nextPage(){
                 location.href = 'dashboard';
+            },
+            userVerification(){
+                var userCheck = document.getElementById('user').value;
+                var passCheck = document.getElementById('password').value;
+
+                if (userCheck === "rhuann@gmail" && passCheck === "1234") {
+                    this.nextPage()
+                }else{
+                    alert("Senha incorreta")
+                }
             }
         },
     }
