@@ -44,12 +44,11 @@
 export default {
     mounted() {
         var routeVerification = window.location.href;
-        var isHomeRoute = routeVerification.slice(-1) === "n";
+        var isHomeRoute = routeVerification.slice(-1) === "/";
         var navbarStylePageScroll;
 
         if (isHomeRoute) {
             this.$refs.buttonadd.style.display = "none";
-            console.log("sim")
         } else {
             window.addEventListener("scroll", this.navbarStylePageScroll);
         }
