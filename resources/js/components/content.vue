@@ -97,3 +97,19 @@
     margin-top: 5px;
 }
 </style>
+
+<script>
+import { VueFinalModal, ModalsContainer } from 'vue-final-modal';
+
+export default {
+    components: {
+        VueFinalModal,
+        ModalsContainer
+    },
+    data: () => ({
+        showModal: false
+  })
+}
+    
+    
+</script>
