@@ -4,13 +4,39 @@
             <h1>Control My Pocket</h1>
         </div>
         <div ref="buttonadd" class="buttonadd">
-            <button @click="showModal = true"><img src="\images\icon-1.png" alt="">Novo</button>
+            <div class="dropdown">
+                <!-- The trigger element -->
+                <button><img src="\images\icon-1.png" alt="">Novo</button>
+
+                <!-- The content -->
+                <div class="dropdown__content">
+                    <a @click="showModalDespesa = true">Nova Despesa</a>
+                    <a @click="showModalReceita = true">Nova Receita</a>
+                </div>
+            </div>
         </div>
 
-        <vue-final-modal v-model="showModal" classes="modal-container" content-class="modal-content">
+        <vue-final-modal v-model="showModalDespesa" classes="modal-container" content-class="modal-content">
             <div class="header-modal">
                 <span>Nova Despesa</span>
-                <button class="modal-close" @click="showModal = false">x</button>
+                <button class="modal-close" @click="showModalDespesa = false">x</button>
+            </div>
+
+            <div class="add-despesa">
+                <input class="input-despesa" type="text" placeholder="Valor">
+                <input class="input-despesa" type="text" placeholder="Descrição">
+                <input class="input-despesa" type="text" placeholder="Tipo Despesa">
+                <input class="input-despesa" type="date" placeholder="Data Vencimento">
+                <button class="button-save">
+                    Salvar
+                </button>
+            </div>
+        </vue-final-modal>
+
+        <vue-final-modal v-model="showModalReceita" classes="modal-container" content-class="modal-content">
+            <div class="header-modal">
+                <span>Nova Receita</span>
+                <button class="modal-close" @click="showModalReceita = false">x</button>
             </div>
 
             <div class="add-despesa">
@@ -27,6 +53,38 @@
 </template>
 
 <style scoped>
+.dropdown {
+    position: relative;
+    transition: 0.5s;
+}
+
+/* Hide the dropdown's content by default */
+.dropdown__content {
+    display: none;
+    left: 0;
+    padding-top: 4px;
+    position: absolute;
+    background-color: #fff;
+    z-index: 9999;
+    transition: 0.5s;
+}
+
+/* Show the content when hover on the container */
+.dropdown:hover .dropdown__content {
+    display: flex;
+    transition: 1s;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 20px;
+    gap: 10px;
+    border-radius: 5px;
+}
+
+
+
+
+
+
 .container {
     display: flex;
     width: 100%;
@@ -133,7 +191,8 @@ export default {
         ModalsContainer
     },
     data: () => ({
-        showModal: false
+        showModalReceita: false,
+        showModalDespesa: false
     }),
     mounted() {
         var routeVerification = window.location.href;
