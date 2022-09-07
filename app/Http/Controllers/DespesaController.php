@@ -14,7 +14,8 @@ class DespesaController extends Controller
      */
     public function index()
     {
-        //
+        $despesa = Despesa::all();
+        return $despesa;
     }
 
     /**
@@ -38,7 +39,7 @@ class DespesaController extends Controller
      */
     public function show(Despesa $despesa)
     {
-        //
+        return $despesa;
     }
 
     /**

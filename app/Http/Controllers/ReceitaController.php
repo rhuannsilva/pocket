@@ -14,7 +14,8 @@ class ReceitaController extends Controller
      */
     public function index()
     {
-        //
+        $receita = Receita::all();
+        return $receita;
     }
 
     /**
@@ -37,7 +38,7 @@ class ReceitaController extends Controller
      */
     public function show(Receita $receita)
     {
-        //
+        return $receita;   
     }
 
     /**
@@ -49,7 +50,12 @@ class ReceitaController extends Controller
      */
     public function update(Request $request, Receita $receita)
     {
-        //
+        print_r($request->all());
+        echo'<hr>';
+        print_r($receita->getAttributes($receita));
+
+        // $receita->update($request->all());
+        // return $receita;
     }
 
     /**
