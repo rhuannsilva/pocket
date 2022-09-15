@@ -16,6 +16,7 @@ class Despesa extends Model
     protected $primaryKey = 'id_despesa';
 
     protected $fillable = [
+                           'id_despesa',
                            'id_usuario',
                            'valor',
                            'descricao',

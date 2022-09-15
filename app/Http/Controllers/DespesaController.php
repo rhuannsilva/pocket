@@ -7,61 +7,35 @@ use Illuminate\Http\Request;
 
 class DespesaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $despesa = Despesa::all();
         return $despesa;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $despesa = Despesa::create($request->all());
-        return $despesa;
+        return response()
+             ->json(Despesa::create($request->all()), status:201);
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Despesa  $despesa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Despesa $despesa)
+    public function show(int $id)
     {
-        return $despesa;
+        $result = Despesa::find($id);
+        return $result;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Despesa  $despesa
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Despesa $despesa)
+    public function update(Request $request, int $id)
     {
-        //
+        Despesa::where('id_despesa', $id)
+               ->update($request->all());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Despesa  $despesa
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Despesa $despesa)
+    public function destroy(int $id)
     {
-        //
+        Despesa::destroy($id);
+        return response()->noContent();
     }
 }

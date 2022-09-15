@@ -7,65 +7,34 @@ use Illuminate\Http\Request;
 
 class ReceitaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $receita = Receita::all();
         return $receita;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $receita = Receita::create($request->all());
-        dd($receita);
+        return response()
+             ->json(Receita::create($request->all()), status:201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Receita  $receita
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Receita $receita)
+    public function show(int $id)
     {
-        return $receita;   
+        $result = Receita::find($id);
+        return $result; 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Receita  $receita
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Receita $receita)
+    public function update(Request $request, int $id)
     {
-        print_r($request->all());
-        echo'<hr>';
-        print_r($receita->getAttributes($receita));
-
-        // $receita->update($request->all());
-        // return $receita;
+        Receita::where('id_receita', $id)
+               ->update($request->all());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Receita  $receita
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Receita $receita)
+    public function destroy(int $id)
     {
-        //
+        Receita::destroy($id);
+        return response()->noContent();
     }
 }
