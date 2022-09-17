@@ -1,9 +1,12 @@
 <template>
     <div class="container">
         <div class="login">
-            <input id="user" type="text" placeholder="Login">
-            <input id="password" type="password" placeholder="Senha">
-            <button @click="userVerification">Entrar</button>
+            <form action="" method="post">
+                <input type="hidden" name="_token" :value="csrf_token">
+                <input id="user" type="text" placeholder="Login" v-model="usuario">
+                <input id="password" @click=login() type="password" placeholder="Senha" v-model="senha">
+                <button >Entrar</button>
+            </form>
         </div>
     </div>
 </template>
@@ -15,7 +18,7 @@
     justify-content: center;
     margin: 200px 0;
 }
-.login{
+.login form{
     display: flex;
     padding: 20px;
     flex-direction: column;
@@ -50,25 +53,36 @@
 </style>
 
 <script>
+import axios from 'axios';
+
     export default {
-        // mounted() {
-        //     console.log('Component mounted.')
-        // },
+        data() {
+            return {
+                usuario: '',
+                senha: ''
+            }
+        },
         methods: {
             nextPage(){
                 location.href = 'dashboard';
             },
-            userVerification(){
-                var userCheck = document.getElementById('user').value;
-                var passCheck = document.getElementById('password').value;
+            login(){
+                
+                axios({
+                    method: 'post',
+                    url: 'api/login',
+                    data:{
+                        usuario: '',
+                        senha: ''
+                    }
+                    
+                })
 
-                if (userCheck === "rhuann@gmail" && passCheck === "1234") {
-                    this.nextPage()
-                }else{
-                    alert("Senha incorreta")
-                }
             }
         },
+        props: [
+            'csrf_token'
+        ]
     }
 </script>
 

@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+// Route::get('/login', function () {
+//     return view('login');
+// });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
 
+Route::get('/login', 'App\Http\Controllers\LoginController@index')->name('login');
+
+Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('dashboard');

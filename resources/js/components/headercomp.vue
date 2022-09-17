@@ -199,7 +199,7 @@ export default {
         var isHomeRoute = routeVerification.slice(-1) === "/";
         var navbarStylePageScroll;
 
-        if (isHomeRoute) {
+        if (!isHomeRoute) {
             this.$refs.buttonadd.style.display = "none";
         } else {
             window.addEventListener("scroll", this.navbarStylePageScroll);

@@ -18,6 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiresource('despesa', 'App\Http\Controllers\DespesaController');
-Route::apiresource('receita', 'App\Http\Controllers\ReceitaController');
-Route::apiresource('usuario', 'App\Http\Controllers\UsuarioController');
+Route::post('login', 'App\Http\Controllers\LoginController@autenticar');

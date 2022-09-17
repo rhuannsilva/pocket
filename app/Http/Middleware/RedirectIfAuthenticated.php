@@ -19,14 +19,12 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $guards = empty($guards) ? [null] : $guards;
+        // session_start();
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
-        }
-
-        return $next($request);
+        // if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ''){
+        //     return $next($request);
+        // }else{
+        //     return redirect()->route('login');
+        // }
     }
 }
