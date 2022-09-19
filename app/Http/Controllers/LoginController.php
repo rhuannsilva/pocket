@@ -31,9 +31,9 @@ class LoginController extends Controller
         $senha = $request->get('senha');
 
         $user = Usuario::where('usuario', $usuario)
-                          ->where('senha', $senha)
-                          ->get()
-                          ->first();
+                       ->where('senha', $senha)
+                       ->get()
+                       ->first();
 
         if(!empty($user)){
             

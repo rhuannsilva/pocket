@@ -40,13 +40,15 @@
             </div>
 
             <div class="add-despesa">
-                <input class="input-despesa" type="text" placeholder="Valor">
-                <input class="input-despesa" type="text" placeholder="Descrição">
-                <input class="input-despesa" type="text" placeholder="Tipo Despesa">
-                <input class="input-despesa" type="date" placeholder="Data Vencimento">
-                <button class="button-save">
-                    Salvar
-                </button>
+                <form @submit.prevent="login">
+                    <input class="input-despesa" type="text" placeholder="Valor" v-model="valorReceita">
+                    <input class="input-despesa" type="text" placeholder="Descrição" v-model="descricaoReceita">
+                    <input class="input-despesa" type="text" placeholder="Tipo Despesa" v-model="tipoDespesa">
+                    <input class="input-despesa" type="date" placeholder="Data Vencimento" v-model="dataVencimento">
+                    <button type="submit" class="button-save">
+                        Salvar
+                    </button>
+                </form>
             </div>
         </vue-final-modal>
     </div>
@@ -70,7 +72,7 @@
 }
 
 /* Show the content when hover on the container */
-.dropdown:hover .dropdown__content {
+.dropdown:hover .dropdown__content{
     display: flex;
     transition: 1s;
     flex-direction: column;
@@ -78,6 +80,10 @@
     padding: 10px 20px;
     gap: 10px;
     border-radius: 5px;
+}
+
+.dropdown__content a:hover{
+    cursor: pointer;
 }
 
 
@@ -115,7 +121,7 @@
     width: 15px;
 }
 
-.add-despesa {
+.add-despesa, .add-despesa form{
     display: flex;
     flex-direction: column;
     align-items: flex-end;

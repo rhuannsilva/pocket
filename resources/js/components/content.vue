@@ -59,7 +59,7 @@
 .content-card {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     gap: 50px;
 }
 
