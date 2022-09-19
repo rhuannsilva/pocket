@@ -1,11 +1,11 @@
 <template>
     <div class="container">
         <div class="login">
-            <form action="" method="post">
+            <form  @submit.prevent="login">
                 <input type="hidden" name="_token" :value="csrf_token">
                 <input id="user" type="text" placeholder="Login" v-model="usuario">
-                <input id="password" @click=login() type="password" placeholder="Senha" v-model="senha">
-                <button >Entrar</button>
+                <input id="password" type="password" placeholder="Senha" v-model="senha">
+                <button type="submit">Entrar</button>
             </form>
         </div>
     </div>
@@ -63,21 +63,13 @@ import axios from 'axios';
             }
         },
         methods: {
-            nextPage(){
-                location.href = 'dashboard';
-            },
             login(){
-                
-                axios({
-                    method: 'post',
-                    url: 'api/login',
-                    data:{
-                        usuario: '',
-                        senha: ''
-                    }
-                    
-                })
-
+                axios.post('/api/login/', {
+                        usuario:this.usuario,
+                        senha:this.senha
+                    } ).then(response => {
+                        window.location.href = '/dashboard';
+                    }).catch(erro=> {console.log(erro)})
             }
         },
         props: [

@@ -43,10 +43,9 @@ class LoginController extends Controller
                 $_SESSION['nome'] = $user->nome;
                 $_SESSION['email'] = $user->email;
 
-                return redirect()->route('dashboard');
             }else{
-                // return redirect()->route('login', ['erro' => '1']);
-                return response()->json(['message' => 'Usuario não encontrado']);
+                return response()->json(['message' => 'errors.custom', [], 500]);
+                dd(response());
             }
         }else{
             return response()->json(['message' => 'Usuario nao encontrado']);
