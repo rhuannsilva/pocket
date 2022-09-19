@@ -44,11 +44,10 @@ class LoginController extends Controller
                 $_SESSION['email'] = $user->email;
 
             }else{
-                return response()->json(['message' => 'errors.custom', [], 500]);
-                dd(response());
+                return response()->json(['message' => 'errors.custom'], 500);
             }
         }else{
-            return response()->json(['message' => 'Usuario nao encontrado']);
+            return response()->json(['message' => 'Usuario nao encontrado'], 401);
         }
 
     }
