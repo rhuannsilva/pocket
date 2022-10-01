@@ -42,7 +42,6 @@ class LoginController extends Controller
                 $_SESSION['id'] = $user->id_usuario;
                 $_SESSION['nome'] = $user->nome;
                 $_SESSION['email'] = $user->email;
-
             }else{
                 return response()->json(['message' => 'errors.custom'], 500);
             }
