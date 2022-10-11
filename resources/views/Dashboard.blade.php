@@ -23,7 +23,9 @@
     <body>
         <div id="app">
             <headercomp></headercomp>
-            <content></content>
+            <content :sobra="{{ $sobra }}"
+                     :sumdespesa="{{ $sumDespesa }}"
+                     :sumreceita="{{ $sumReceita }}" ></content>
         </div>
 
         @vite('resources/js/app.js')
