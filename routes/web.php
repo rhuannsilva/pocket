@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('dashboard');
 // });
 
+
 Route::get('/login', 'App\Http\Controllers\LoginController@index')->name('login');
 
 Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('dashboard');

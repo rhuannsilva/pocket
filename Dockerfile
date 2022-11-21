@@ -1,20 +1,10 @@
-FROM php:8.0.2-fpm-alpine
-
-RUN apk add --no-cache openssl bash nodejs npm postgresql-dev
-
-RUN docker-php-ext-install bcmath pdo pdo_pgsql
-
-WORKDIR /var/www
-
-RUN rm -rf /var/www/html  
-RUN ln -s public html
+FROM php:fpm-alpine
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY . /var/www
+RUN set -ex \
+    	&& apk --no-cache add postgresql-dev nodejs yarn npm\
+    	&& docker-php-ext-install pdo pdo_pgsql
 
-RUN chmod -R 777 /var/www/storage
+WORKDIR /var/www/html
 
-EXPOSE 9000
-
-ENTRYPOINT [ “php-fpm” ]
